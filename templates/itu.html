@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание ИРНИТУ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Расписание ИРНИТУ</h1>
+        </header>
+        <form action="/filt" method="post">
+            <article>
+    <ul>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Институт</button>
+                    <div class="dropdown-content">
+                      <li>
+                        <label>Институт экономики, управления и права</label>
+                        <input type="checkbox" name="institute" value="Институт экономики, управления и права" />
+                      </li>
+                      <li>
+                        <label>Институт энергетики</label>
+                        <input type="checkbox" name="institute" value="Институт энергетики" />
+                      </li>
+                      <li>
+                        <label>Институт недропользования</label>
+                        <input type="checkbox" name="institute" value="Институт недропользования" />
+                      </li>
+                      <li>
+                        <label>Институт информационных технологий и анализа данных</label>
+                        <input type="checkbox" name="institute" value="Институт информационных технологий и анализа данных" />
+                      </li>
+                      <li>
+                        <label>Институт высоких технологий</label>
+                        <input type="checkbox" name="institute" value="Институт высоких технологий" />
+                      </li>
+                      <li>
+                        <label>Институт архитектуры, строительства и дизайна</label>
+                        <input type="checkbox" name="institute" value="Институт архитектуры, строительства и дизайна" />
+                      </li>
+                      <li>
+                        <label>Институт авиамашиностроения и транспорта</label>
+                        <input type="checkbox" name="institute" value="Институт авиамашиностроения и транспорта"/>
+                      </li>
+                      <li>
+                        <label>Институт "Сибирская школа геонаук (Siberian School of Geosciences)"</label>
+                        <input type="checkbox" name="institute" value="g"/>
+                      </li>
+                      <li>
+                        <label>Байкальский институт БРИКС</label>
+                        <input type="checkbox" name="institute" value="Байкальский институт БРИКС"/>
+                      </li>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <button class="dropbtn">обучение</button>
+                    <div class="dropdown-content">
+                      <li>
+                        <label>бакалавриат</label>
+                        <input type="checkbox" name="learn" value="бакалавриат" />
+                      </li>
+                      <li>
+                        <label>магистратура</label>
+                        <input type="checkbox" name="learn" value="магистратура" />
+                      </li>
+                      <li>
+                        <label>специалитет</label>
+                        <input type="checkbox" name="learn" value="специалитет" />
+                      </li>
+                    </div>
+                  </div>
+
+                  <div class="dropdown">
+                    <button class="dropbtn">курс</button>
+                    <div class="dropdown-content">
+                      <li>
+                        <label >курс 1</label>
+                        <input type="checkbox" name="year" value="Курс 1" />
+                      </li>
+                      <li>
+                        <label >курс 2</label>
+                        <input type="checkbox" name="year" value="Курс 2" />
+                      </li>
+                      <li>
+                        <label>курс 3</label>
+                        <input type="checkbox" name="year" value="Курс 3" />
+                      </li>
+                      <li>
+                        <label>курс 4</label>
+                        <input type="checkbox" name="year" value="Курс 4" />
+                      </li>
+                      <li>
+                        <label>курс 5</label>
+                        <input type="checkbox" name="year" value="Курс 5" />
+                      </li>
+                      <li>
+                        <label>курс 6</label>
+                        <input type="checkbox" name="year" value="Курс 6" />
+                      </li>
+                    </div>
+                  </div>
+            </ul>
+
+        </article>
+                    <label>Введите суда группы <br>пример:<br> ИСИб-23-1, ИСИб-22-1</label>
+
+            <textarea name="group" rows="2" cols="33"></textarea>
+        <button class="button" type="submit">применить фильтры</button>
+
+        </form>
+
+        <div class="conteiner_table">
+            <table>
+                <tr>
+                    <th>Время </th><!-- Заголовок пустого столбца -->
+                    <th>Понедельник</th>
+                    <th>Вторник</th>
+                    <th>Среда</th>
+                    <th>Четверг</th>
+                    <th>Пятница</th>
+                    <th>Суббота</th>
+                </tr>
+                <tr>
+                    <td>8:15-9:45</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][1] * (150 / maxi))}}, 50)">{{ i[1][1] }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>10:00-11:30</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][2] * (150 / maxi))}}, 50)">{{ i[1][2] }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>11:45-13:15</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][3] * (150 / maxi))}}, 50)">{{ i[1][3] }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>13:45-15:15</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][4] * (150 / maxi))}}, 50)">{{ i[1][4] }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>15:30-17:00</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][5] * (150 / maxi))}}, 50)">{{ i[1][5] }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>17:10-18:40</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][6] * (150 / maxi))}}, 50)">{{ i[1][6] }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>18:45-20:15</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][7] * (150 / maxi))}}, 50)">{{ i[1][7] }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>20:20-21:50</td>
+                    {% for i in week.items() %}
+                        <td style="background-color: rgb(50, {{200 - (i[1][8] * (150 / maxi))}}, 50)">{{ i[1][8] }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+        <form action="/update" method="post">
+            <button class="big-button" type="submit">обновить базу данных</button>
+        </form>
+
+
+
+    </main>
+        
+    
+</body>
+</html>
