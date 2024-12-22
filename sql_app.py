@@ -18,6 +18,7 @@ def create():
 	connection.commit()
 	connection.close()
 
+
 def add(id, group, institute, training, year, day, pairs):
 	connection = sqlite3.connect('INTU_database.db')
 	cursor = connection.cursor()
@@ -35,9 +36,6 @@ def add(id, group, institute, training, year, day, pairs):
 	connection.close()
 
 
-
-
-
 def get_filtered_data(group=None, institute=None, year=None, education_level=None):
 	conn = sqlite3.connect('INTU_database.db')
 	cursor = conn.cursor()
@@ -49,7 +47,6 @@ def get_filtered_data(group=None, institute=None, year=None, education_level=Non
 		placeholders = ', '.join('?' for _ in filter_list)
 		return f' AND {column_name} IN ({placeholders})', filter_list
 	
-
 	if group:
 		filter_query, filter_params = handle_list_filter('clas', group) if isinstance(group, list) else (
 		f' AND clas = ?', [group])
@@ -69,15 +66,12 @@ def get_filtered_data(group=None, institute=None, year=None, education_level=Non
 		params.extend(filter_params)
 	
 	if education_level:
-		filter_query, filter_params = handle_list_filter('training', education_level) if isinstance(education_level,                                                                                           list) else (
+		filter_query, filter_params = handle_list_filter('training', education_level) if isinstance(education_level, list) else (
 		f' AND training = ?', [education_level])
 		query += filter_query
 		params.extend(filter_params)
 	
-
 	cursor.execute(query, params)
-	
-
 	results = cursor.fetchall()
 	
 	conn.close()
@@ -103,6 +97,7 @@ def count(results):
 			num //= 10
 	return week
 
+
 def updata(url):
 	for link in prs.instityte(url):
 		# print(*link, url + str(link['href']))
@@ -114,8 +109,7 @@ def updata(url):
 				# print(grup[i][j][1], end="    ")
 				even_week = prs.shods(res_url)
 				prs.week(res_url, even_week, grup[i][j][1], str(*link), i)
-	
-		# print('\n_______________________________________________________________________________________________________')
+
 
 def mini(week):
 	mini = 9999
@@ -123,6 +117,8 @@ def mini(week):
 		for j in range(1, len(i[1])):
 			mini = min(i[1][j], mini)
 	return mini
+
+
 def maxi(week):
 	maxi = -1
 	for i in week.items():

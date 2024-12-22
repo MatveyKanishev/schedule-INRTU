@@ -1,4 +1,4 @@
-/* Основные стили для таблицы */
+
 table {
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@ table {
 
 }
 
-/* Стили для заголовков столбцов */
+
 th {
     background-color: rgb(114, 205, 83);
     color: white;
@@ -14,7 +14,7 @@ th {
     text-align: left;
 }
 
-/* Стили для ячеек данных */
+
 td {
     text-align: center;
     border: 1px solid #dddddd;
@@ -23,7 +23,7 @@ td {
 
 }
 
-/* Пустая ячейка первого столбца */
+
 th:first-child,
 td:first-child {
     text-align: right;
@@ -31,7 +31,7 @@ td:first-child {
     width: 15%;
 }
 
-/* Чередование цветов строк */
+
 tr:nth-child(even) td {
     text-align: center;
     background-color: #f2f2f2;
@@ -58,8 +58,6 @@ tr:nth-child(even) td {
 .conteiner_button {
     width: 100%;
     display: inline-flex;
-    /* grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto; */
     gap: 20px;
     justify-items: center;
 }
@@ -101,14 +99,12 @@ body {
     align-items: center;
   }
 
-  /* Контейнер <div> - необходим для размещения выпадающего содержимого */
   .dropdown {
 
     position: relative;
     display: inline-block;
   }
 
-  /* Выпадающее содержимое (скрыто по умолчанию) */
   .dropdown-content {
 
     display: none;
@@ -119,7 +115,7 @@ body {
     z-index: 1;
   }
 
-  /* Ссылки внутри выпадающего списка */
+
   .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -127,13 +123,11 @@ body {
     display: block;
   }
 
-  /* Изменение цвета выпадающих ссылок при наведении курсора */
   .dropdown-content a:hover {background-color: #ddd;}
 
-  /* Показать выпадающее меню при наведении курсора */
+
   .dropdown:hover .dropdown-content {display: block;}
 
-  /* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
 li {
     display: flex;

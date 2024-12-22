@@ -54,13 +54,11 @@ def shods(url: str):
 def week(res_url: str, even_week, grop: str, inst: str, year : str):
 	
 	if even_week:
-		# Ищем все элементы с классом "day-heading"
 		day_headings = even_week.find_all(class_='day-heading')
 
 		translt = {'8:15': 1, '10:00': 2, '11:45': 3, '13:45': 4, '15:30': 5, '17:10': 6, '18:45': 7, '20:20': 8}
 		for day in day_headings:
 			day_text = day.get_text(strip=True)
-			# print(f'Day: {day_text}, {day}')
 			stri = grop + str(day_text)[:3]
 			#print(stri)
 			# Ищем класс "class-lines"
@@ -72,7 +70,6 @@ def week(res_url: str, even_week, grop: str, inst: str, year : str):
 				masiw = ''
 				for class_time in class_times:
 					class_time_text = class_time.get_text(strip=True)
-					# print(f'  Class Time: {class_time_text}')
 					masiw += str(translt[class_time_text])
 				learn = 'специалитет'
 				if re.findall(r"[б]", grop):
@@ -82,5 +79,3 @@ def week(res_url: str, even_week, grop: str, inst: str, year : str):
 				day = day_text.split(',')[0]
 				sql_app.add(stri, grop, inst, learn, year, day, int(masiw))
 				# print('\n', stri, int(masiw), inst, day, learn, grop)
-	else:
-		pass# print('расписсание нет')
