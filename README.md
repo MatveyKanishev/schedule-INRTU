@@ -1,12 +1,12 @@
 # schedule-INRTU
 сервис для анализа раписания ИРНИТУ
 
-##как запустить проект?
+## Как запустить проект?
 
 
 1) Для установки необходим предустановленный Docker
 2) Клонироние репозитория с github.com
-    Some basic Git commands are:
+    
 ```
 git clone https://github.com/MatveyKanishev/schedule-INRTU.git
 ```
@@ -14,7 +14,7 @@ git clone https://github.com/MatveyKanishev/schedule-INRTU.git
 ```commandline
 ./build.sh
 ```
-4) перейти по ссылке ``http://127.0.0.1:5000/``
+4) Перейти по ссылке ``http://127.0.0.1:5000/``
 ## Функционал
 
 С нашим сервисом вы сможете легко находить нужные 
